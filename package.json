@@ -1,0 +1,11 @@
+{
+  "name": "ballin-app",
+  "version": "1.0.0",
+  "description": "有Ball必In 籃球歡樂打社團 - LINE LIFF 球局報名系統",
+  "private": true,
+  "dependencies": {
+    "@libsql/client": "0.5.6",
+    "axios": "^1.7.0",
+    "dotenv": "^16.4.0"
+  }
+}
