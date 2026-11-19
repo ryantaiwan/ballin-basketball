@@ -14,7 +14,11 @@ export default function LoginPage({ onLogin, error }) {
       padding: 20,
       textAlign: 'center',
     }}>
-      <div style={{ fontSize: 56, marginBottom: 16 }}>🏀</div>
+      <img
+        src="/logo.jpg"
+        alt="有Ball必In 籃球歡樂打社團"
+        className="login-logo"
+      />
       <h1 style={{ fontSize: 24, fontWeight: 900, marginBottom: 8 }}>
         有Ball必In 籃球歡樂打社團
       </h1>

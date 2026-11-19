@@ -31,36 +31,42 @@ export default function HomePage({ onGameClick, isAdmin, onAdminClick, onMyRegis
     <>
       <header className="app-header">
         <h1>
-          <span className="header-icon">🏀</span>
-          有Ball必In 籃球歡樂打社團
+          <img src="/logo.jpg" alt="有Ball必In 籃球歡樂打社團" className="header-logo" />
+          <span className="header-title-text">有Ball必In 籃球歡樂打社團</span>
         </h1>
         <p className="subtitle">球局報名系統</p>
       </header>
 
       <div className="page">
-        <div className="view-toggle">
-          <button
-            className={viewMode === 'list' ? 'active' : ''}
-            onClick={() => setViewMode('list')}
-          >
-            📋 列表
-          </button>
-          <button
-            className={viewMode === 'grid' ? 'active' : ''}
-            onClick={() => setViewMode('grid')}
-          >
-            🔲 格子
-          </button>
-        </div>
-
-        {/* 我的報名按鈕 */}
-        {onMyRegistrationsClick && (
-          <div style={{ marginBottom: 12 }}>
-            <button className="btn btn-secondary btn-sm" onClick={onMyRegistrationsClick}>
+        {/* 我的報名紀錄 + 列表/格子切換 — 同一列，報名佔3/4，列表格子佔1/4 */}
+        <div className="home-toolbar">
+          {onMyRegistrationsClick ? (
+            <button
+              className="btn btn-secondary btn-sm toolbar-btn toolbar-three-quarter"
+              onClick={onMyRegistrationsClick}
+            >
               📌 我的報名紀錄
             </button>
+          ) : (
+            <div className="toolbar-three-quarter" />
+          )}
+          <div className="view-toggle toolbar-quarter">
+            <button
+              className={viewMode === 'list' ? 'active' : ''}
+              onClick={() => setViewMode('list')}
+              title="列表模式"
+            >
+              📋
+            </button>
+            <button
+              className={viewMode === 'grid' ? 'active' : ''}
+              onClick={() => setViewMode('grid')}
+              title="格子模式"
+            >
+              🔲
+            </button>
           </div>
-        )}
+        </div>
 
         {loading ? (
           <div className="loading">
@@ -69,7 +75,7 @@ export default function HomePage({ onGameClick, isAdmin, onAdminClick, onMyRegis
           </div>
         ) : games.length === 0 ? (
           <div className="empty-state">
-            <div className="icon">🏀</div>
+            <img src="/logo.jpg" alt="logo" className="empty-logo" />
             <div className="text">目前沒有球局，敬請期待！</div>
           </div>
         ) : viewMode === 'list' ? (

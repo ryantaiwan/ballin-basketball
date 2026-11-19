@@ -2,7 +2,7 @@
  * 有Ball必In 籃球歡樂打社團 - 主應用元件
  * 管理 LIFF 初始化、登入狀態、頁面路由
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLiff } from './hooks/useLiff';
 import Toast from './components/Toast';
 import LoginPage from './pages/LoginPage';
@@ -12,7 +12,7 @@ import AdminPage from './pages/AdminPage';
 import MyRegistrationsPage from './pages/MyRegistrationsPage';
 
 export default function App() {
-  const { liffReady, liffError, userProfile, isLoggedIn, isAdmin, login } = useLiff();
+  const { liffReady, liffError, userProfile, isLoggedIn, isAdmin, login, sendMessages } = useLiff();
   const [page, setPage] = useState('home'); // home | detail | admin | my-registrations
   const [selectedGameId, setSelectedGameId] = useState(null);
   const [toast, setToast] = useState({ message: '', type: 'info' });
@@ -20,6 +20,17 @@ export default function App() {
   const showToast = (message, type = 'info') => {
     setToast({ message, type });
   };
+
+  // 支援深層連結 ?game=<id>（LINE 卡片按鈕點擊後直接開啟該球局）
+  useEffect(() => {
+    if (!isLoggedIn) return;
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get('game');
+    if (gameId && /^\d+$/.test(gameId)) {
+      setSelectedGameId(Number(gameId));
+      setPage('detail');
+    }
+  }, [isLoggedIn]);
 
   // LIFF 尚未初始化
   if (!liffReady) {
@@ -81,6 +92,7 @@ export default function App() {
           isAdmin={isAdmin}
           onBack={goHome}
           showToast={showToast}
+          sendMessages={sendMessages}
         />
       )}
 

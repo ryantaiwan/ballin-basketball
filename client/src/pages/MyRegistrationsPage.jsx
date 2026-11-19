@@ -26,7 +26,7 @@ export default function MyRegistrationsPage({ onBack, onGameClick }) {
 
   const formatDate = (dateStr) => {
     const d = new Date(dateStr);
-    return `${d.getMonth() + 1}/${d.getDate()}（${['日','一','二','三','四','五','六'][d.getDay()]}）`;
+    return `${d.getFullYear()}/${d.getMonth() + 1}/${d.getDate()}（${['日','一','二','三','四','五','六'][d.getDay()]}）`;
   };
 
   return (

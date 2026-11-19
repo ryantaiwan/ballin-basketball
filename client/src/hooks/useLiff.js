@@ -82,6 +82,28 @@ export function useLiff() {
     }
   }, [liffReady]);
 
+  /**
+   * 透過 liff.sendMessages() 發送訊息到使用者當前的聊天室
+   * 仅在 LIFF 內部（LINE app）可用；外部瀏覽器會跳轉到 LINE
+   * @param {object|array} messages - LINE message object 或陣列
+   * @returns {Promise<boolean>} 是否成功
+   */
+  const sendMessages = useCallback(async (messages) => {
+    if (!liffReady) {
+      console.warn('[LIFF] 尚未初始化，無法 sendMessages');
+      return false;
+    }
+    try {
+      const msgs = Array.isArray(messages) ? messages : [messages];
+      await liff.sendMessages(msgs);
+      console.log('[LIFF] sendMessages 成功');
+      return true;
+    } catch (err) {
+      console.error('[LIFF] sendMessages 失敗:', err);
+      return false;
+    }
+  }, [liffReady]);
+
   return {
     liffReady,
     liffError,
@@ -91,5 +113,6 @@ export function useLiff() {
     login,
     logout,
     reloadProfile: loadProfile,
+    sendMessages,
   };
 }

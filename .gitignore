@@ -27,3 +27,8 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Flex Message 預覽輸出
+.flex-preview/
+
+.vercel

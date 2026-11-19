@@ -143,6 +143,34 @@ body {
   font-size: 24px;
 }
 
+/* ===== 球隊 Logo 圖片 ===== */
+.header-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--ball-orange);
+  box-shadow: 0 0 12px rgba(255, 122, 0, 0.4);
+  background: #000;
+}
+
+.header-title-text {
+  display: inline-block;
+  line-height: 1.25;
+}
+
+.login-logo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  border: 3px solid var(--ball-orange);
+  box-shadow: 0 0 24px rgba(255, 122, 0, 0.45);
+  background: #000;
+}
+
 .app-header .subtitle {
   font-size: 12px;
   color: var(--text-secondary);
@@ -197,6 +225,17 @@ body {
 }
 .empty-state .text {
   font-size: 15px;
+}
+
+.empty-logo {
+  width: 144px;
+  height: 144px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  opacity: 0.6;
+  border: 1px solid var(--border);
+  background: #000;
 }
 
 /* ===== Toast ===== */
@@ -255,6 +294,39 @@ body {
 .view-toggle button.active {
   background: var(--accent);
   color: white;
+}
+
+/* ===== 首頁工具列（報名紀錄 + 列表/格子切換同一列） ===== */
+.home-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.toolbar-three-quarter {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.toolbar-quarter {
+  flex: 0 0 25%;
+  max-width: 25%;
+  margin-bottom: 0;
+}
+
+.toolbar-btn {
+  width: 100%;
+}
+
+.home-toolbar .view-toggle {
+  margin-bottom: 0;
+}
+
+/* 列表/格子按鈕去掉文字，只顯示圖示 */
+.home-toolbar .view-toggle button {
+  font-size: 18px;
+  padding: 8px 0;
 }
 
 /* ===== 球局列表 - 列表模式 ===== */
@@ -565,6 +637,11 @@ body {
   color: #1a1a2e;
 }
 
+.roster-item .number.waitlist-icon {
+  background: transparent;
+  font-size: 16px;
+}
+
 .roster-item.me {
   border-color: var(--accent);
   background: var(--accent-soft);
@@ -753,3 +830,70 @@ body {
 }
 .status-tag.open { background: var(--success-soft); color: var(--success); }
 .status-tag.closed { background: var(--accent-soft); color: var(--accent); }
+.status-tag.in_progress { background: var(--ball-orange-soft); color: var(--ball-orange); }
+.status-tag.ended { background: var(--bg-card-hover); color: var(--text-muted); }
+.status-tag.cancelled { background: var(--accent-soft); color: var(--accent); }
+.status-tag.paid { background: var(--success-soft); color: var(--success); }
+.status-tag.unpaid { background: var(--warning-soft); color: var(--warning); }
+
+/* 收款狀態切換按鈕（管理者） */
+.toggle-paid-btn {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+.toggle-paid-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.03);
+}
+
+/* ===== 付款方式 Chip ===== */
+.payment-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.payment-chip:hover {
+  border-color: var(--border-hover);
+}
+
+.payment-chip.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* ===== 管理者頁面按鈕 ===== */
+.admin-page .btn-danger {
+  width: auto;
+}
+
+/* ===== select 下拉 ===== */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0b8' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.form-group select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}

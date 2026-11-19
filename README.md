@@ -16,18 +16,17 @@ LINE LIFF 球局報名系統，可在 LINE 聊天群組中直接使用。
    turso db show ballin-db --url       # 取得 URL
    turso db tokens create ballin-db    # 取得 Token
    ```
+
 4. **匯入 Vercel** — [vercel.com](https://vercel.com/) → New Project → 選擇 GitHub 倉庫
 5. **設定環境變數**：
-
-   | Key | Value |
-   |-----|-------|
-   | `TURSO_DATABASE_URL` | `libsql://ballin-db-xxxx.turso.io` |
-   | `TURSO_AUTH_TOKEN` | 你的 Turso Auth Token |
-   | `LIFF_CHANNEL_ACCESS_TOKEN` | LINE Channel Access Token |
-   | `LIFF_CHANNEL_SECRET` | LINE Channel Secret |
-   | `VITE_LIFF_ID` | 你的 LIFF ID |
-   | `VITE_API_BASE_URL` | （留空） |
-
+   | Key                         | Value                              |
+   | --------------------------- | ---------------------------------- |
+   | `TURSO_DATABASE_URL`        | `libsql://ballin-db-xxxx.turso.io` |
+   | `TURSO_AUTH_TOKEN`          | 你的 Turso Auth Token                |
+   | `LIFF_CHANNEL_ACCESS_TOKEN` | LINE Channel Access Token          |
+   | `LIFF_CHANNEL_SECRET`       | LINE Channel Secret                |
+   | `VITE_LIFF_ID`              | 你的 LIFF ID                         |
+   | `VITE_API_BASE_URL`         | （留空）                               |
 6. **Deploy** — 前端 + API 同時上線
 7. **初始化資料庫**：
    ```bash
@@ -67,13 +66,13 @@ vercel dev    # 同時啟動前端 + API
 
 ## 技術棧
 
-| 層 | 技術 |
-|----|------|
-| 前端 | React 18 + Vite + LINE LIFF SDK |
-| 後端 | Vercel Serverless Functions (Node.js) |
-| 資料庫 | Turso (libSQL / SQLite) |
-| 通知 | LINE Messaging API (Push Message) |
-| 部署 | Vercel（前端 + API 同站） |
+| 層   | 技術                                    |
+| --- | ------------------------------------- |
+| 前端  | React 18 + Vite + LINE LIFF SDK       |
+| 後端  | Vercel Serverless Functions (Node.js) |
+| 資料庫 | Turso (libSQL / SQLite)               |
+| 通知  | LINE Messaging API (Push Message)     |
+| 部署  | Vercel（前端 + API 同站）                   |
 
 ## 專案結構
 
